@@ -1,106 +1,95 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Flexbox Pricing Table</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sono:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Sono', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Reveal</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0d1b2a;
+            color: #fff;
+            overflow: hidden;
+        }
 
-    .pricing-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      gap: 2rem;
-    }
+        .container {
+            text-align: center;
+            cursor: pointer;
+        }
 
-    .pricing-plan {
-      flex: 1;
-      max-width: 400px;
-      padding: 20px;
-      background-color: #f2f2f2;
-      border-radius: 5px;
-      text-align: center;
-    }
+        .hidden-content {
+            display: none;
+        }
 
-    .plan-title {
-      font-size: 24px;
-      font-weight: bolder;
-      margin-bottom: 10px;
-    }
+        h1, h2, p {
+            margin: 20px 0;
+        }
 
-    .plan-price {
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
+        .reveal {
+            animation: fadeIn 1.5s ease-in-out;
+        }
 
-    .plan-features {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-    .plan-features li {
-      margin-bottom: 20px;
-    }
+        .button {
+            background-color: #ff4b5c;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-    .plan-button {
-      padding: 10px;
-      background-color: #ff6600;
-      color: #fff;
-      border-radius: 5px;
-      border: none;
-    }
+        .button:hover {
+            background-color: #e63946;
+        }
 
-    @media (max-width: 1250px) {
-      .pricing-container {
-        flex-direction: column;
-        height: 100%;
-      }
-    }
-  </style>
+        .sparkle {
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { text-shadow: 0 0 10px #ff4b5c, 0 0 20px #ff4b5c; }
+            50% { text-shadow: 0 0 20px #ffd166, 0 0 30px #ffd166; }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="pricing-container">
-    <div class="pricing-plan">
-      <div class="plan-title">Basic</div>
-      <div class="plan-price">$11.99/month</div>
-      <ul class="plan-features">
-        <li>✅ 10GB Storage</li>
-        <li>✅ 1 User</li>
-        <li>🚫 Support</li>
-      </ul>
-      <button class="plan-button">Sign Up</a>
-    </div>
-    <div class="pricing-plan">
-      <div class="plan-title">Standard</div>
-      <div class="plan-price">$19.99/month</div>
-      <ul class="plan-features">
-        <li>✅ 50GB Storage</li>
-        <li>✅ 5 Users</li>
-        <li>✅ Phone &amp; Email Support</li>
-      </ul>
-      <button class="plan-button">Sign Up</a>
-    </div>
-    <div class="pricing-plan">
-      <div class="plan-title">Premium</div>
-      <div class="plan-price">$49.99/month</div>
-      <ul class="plan-features">
-        <li>✅ 100GB Storage</li>
-        <li>✅ 10 Users</li>
-        <li>✅ 24/7 Support</li>
-      </ul>
-      <button class="plan-button">Sign Up</a>
-    </div>
-  </div>
+    <div class="container" onclick="revealContent()">
+        <h1 id="main-text" class="sparkle">Touch Here, I Have Something</h1>
 
+        <div id="hidden" class="hidden-content">
+            <h2>Surprise! 🌟</h2>
+            <p>This moment is a reflection of your passion, dedication, and unstoppable spirit.</p>
+            <p>Today isn’t just any day — it’s YOUR day, where you leave your mark and light up the stage!</p>
+            <h2><em>Men Will Not Be Men</em></h2>
+            <p>The story, the stage, and the spotlight — all waiting for YOU to own it.</p>
+            <h2>✨ Wishing you ALL THE BEST! ✨</h2>
+            <p>Go out there, give it your heart, and let the world witness the magic you create!</p>
+            <button class="button" onclick="window.location.reload()">Replay</button>
+        </div>
+    </div>
+
+    <script>
+        function revealContent() {
+            const mainText = document.getElementById('main-text');
+            const hiddenContent = document.getElementById('hidden');
+
+            mainText.style.display = 'none';
+            hiddenContent.style.display = 'block';
+            hiddenContent.classList.add('reveal');
+        }
+    </script>
 </body>
-
 </html>
